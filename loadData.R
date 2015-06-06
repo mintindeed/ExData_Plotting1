@@ -18,4 +18,5 @@ if ( ! exists("hpc") ) {
     hpc_headers = read.csv( dataFile, sep=";", header=TRUE, nrows=1)
     names(hpc) = names(hpc_headers)
     hpc[1] = lapply(hpc[1], function(x) as.Date( x, "%d/%m/%Y" ) )
+    hpc$datetime = as.POSIXlt( paste(hpc$Date, hpc$Time, sep=" ") )
 }
